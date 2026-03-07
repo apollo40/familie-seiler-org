@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Persönliche Homepage von Mike Seiler – Entwickler, Technik-Enthusiast und neugieriger Mensch." />
+  <meta property="og:title" content="Mike Seiler" />
+  <meta property="og:description" content="Persönliche Homepage von Mike Seiler" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0071e3" />
+  <title>Mike Seiler</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Theme detection before first paint (prevents flash of wrong theme) -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme') ||
+        (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ======= Navigation ======= -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Mike Seiler</a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">Über mich</a>
+        <a href="#interests" class="nav-link">Interessen</a>
+        <a href="#contact" class="nav-link">Kontakt</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Dark Mode aktivieren">
+          <!-- Sun icon – shown in dark mode to switch to light -->
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <!-- Moon icon – shown in light mode to switch to dark -->
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+        </button>
+        <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  </nav>
+
+  <!-- ======= Hero ======= -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-orb hero-bg-orb--1" aria-hidden="true"></div>
+    <div class="hero-bg-orb hero-bg-orb--2" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <!-- Foto: Lege dein Bild als assets/photo.jpg ab. Solange kein Bild vorhanden ist, wird der Buchstabe "M" angezeigt. -->
+      <div class="hero-photo-wrapper" data-initial="M">
+        <img src="assets/photo.jpg" alt="Mike Seiler" class="hero-photo" id="hero-photo" />
+      </div>
+
+      <p class="hero-greeting">Hallo, ich bin</p>
+      <h1 class="hero-title">Mike <span class="accent">Seiler</span></h1>
+      <p class="hero-subtitle">
+        <span id="typed-text"></span><span class="typing-cursor" aria-hidden="true">|</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">Mehr erfahren</a>
+        <a href="#contact" class="btn btn-secondary">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= About ======= -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Über mich</h2>
+        <p class="section-subtitle">Ein paar Worte zu meiner Person</p>
+      </div>
+      <div class="about-grid">
+
+        <!-- ANPASSEN: Ersetze die Texte in den drei Karten mit deinen eigenen Informationen -->
+        <div class="glass-card about-card reveal" style="transition-delay: 0s;">
+          <div class="about-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+            </svg>
+          </div>
+          <h3>Wer ich bin</h3>
+          <p>Hier steht deine persönliche Vorstellung. Ersetze diesen Text mit ein paar Sätzen über dich – wer du bist, was dich ausmacht und was dich antreibt.</p>
+        </div>
+
+        <div class="glass-card about-card reveal" style="transition-delay: 0.15s;">
+          <div class="about-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
+          </div>
+          <h3>Was mich bewegt</h3>
+          <p>Hier kannst du deine Werte, Leidenschaften und das beschreiben, was dich motiviert. Was treibt dich an? Was macht deine Geschichte besonders?</p>
+        </div>
+
+        <div class="glass-card about-card reveal" style="transition-delay: 0.3s;">
+          <div class="about-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3>Wo ich lebe</h3>
+          <p>Beschreibe hier deinen Wohnort und Lebensstil. Wo bist du zuhause, was schätzt du an deiner Umgebung und was macht deinen Alltag aus?</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Interests ======= -->
+  <section class="section section-alt" id="interests">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Interessen</h2>
+        <p class="section-subtitle">Was mich begeistert</p>
+      </div>
+
+      <!-- ANPASSEN: Passe die Interessen und Icons nach deinen Wünschen an -->
+      <div class="interests-grid">
+
+        <div class="interest-item reveal" style="transition-delay: 0s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="14" x="2" y="3" rx="2"/>
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+            </svg>
+          </div>
+          <span class="interest-label">Technologie</span>
+        </div>
+
+        <div class="interest-item reveal" style="transition-delay: 0.07s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/>
+            </svg>
+          </div>
+          <span class="interest-label">Reisen</span>
+        </div>
+
+        <div class="interest-item reveal" style="transition-delay: 0.14s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"/>
+              <circle cx="12" cy="13" r="3"/>
+            </svg>
+          </div>
+          <span class="interest-label">Fotografie</span>
+        </div>
+
+        <div class="interest-item reveal" style="transition-delay: 0.21s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
+          <span class="interest-label">Musik</span>
+        </div>
+
+        <div class="interest-item reveal" style="transition-delay: 0.28s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <span class="interest-label">Sport</span>
+        </div>
+
+        <div class="interest-item reveal" style="transition-delay: 0.35s;">
+          <div class="interest-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+              <path d="M7 2v20"/>
+              <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3v7"/>
+            </svg>
+          </div>
+          <span class="interest-label">Kochen</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Contact ======= -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Kontakt</h2>
+        <p class="section-subtitle">Ich freue mich, von dir zu hören</p>
+      </div>
+      <div class="contact-layout">
+
+        <div class="contact-info reveal">
+          <h3>Schreib mir</h3>
+          <p>Ob du Fragen hast, zusammenarbeiten möchtest oder einfach Hallo sagen willst – ich freue mich über jede Nachricht.</p>
+
+          <!-- ANPASSEN: Ersetze kontakt@example.com mit deiner E-Mail-Adresse -->
+          <a href="mailto:nickels_dory4j@icloud.com" class="contact-email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            kontakt@example.com
+          </a>
+
+          <div class="social-links">
+            <!-- GitHub -->
+            <a href="https://github.com/apollo40" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profil besuchen">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+              </svg>
+            </a>
+
+            <!-- ANPASSEN: Ersetze # mit deiner Instagram-URL (z.B. https://instagram.com/deinname) -->
+            <a href="https://www.instagram.com/mike_seiler/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profil besuchen">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+
+            <!-- ANPASSEN: Ersetze # mit deiner LinkedIn-URL (z.B. https://linkedin.com/in/deinname) -->
+            <a href="https://www.linkedin.com/in/mike-seiler-7a168b53/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profil besuchen">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!--
+          ANPASSEN: Kontaktformular über Formspree.
+          1. Registriere dich kostenlos auf formspree.io
+          2. Erstelle ein neues Formular und kopiere deine Form-ID
+          3. Ersetze {FORM_ID} unten mit deiner Form-ID (z.B. xyzabcde)
+        -->
+        <form class="glass-card contact-form reveal" id="contact-form"
+              action="https://formspree.io/f/xqeyakwo" method="POST">
+          <div class="form-group">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Dein Name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">E-Mail</label>
+            <input type="email" id="cf-email" name="email" placeholder="deine@email.de" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Nachricht</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Deine Nachricht..." required></textarea>
+          </div>
+          <!-- Honeypot-Feld gegen Spam (für Menschen unsichtbar) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+            <span class="btn-text">Nachricht senden</span>
+            <span class="btn-loading" aria-hidden="true">Sende&hellip;</span>
+          </button>
+          <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-copyright">&copy; 2026 Mike Seiler</p>
+      <p class="footer-sub">Mit ♥ gebaut</p>
+    </div>
+  </footer>
+
+  <!-- ======= Back to Top ======= -->
+  <button class="back-to-top" id="back-to-top" aria-label="Nach oben scrollen">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
