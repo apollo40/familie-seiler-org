@@ -304,11 +304,57 @@
   --------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const href = anchor.getAttribute('href');
+      // Modals via data-modal handhaben (href="#" überspringen)
+      if (anchor.dataset.modal) return;
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+
+  /* ---------------------------------------------------------
+     12. Modal-Steuerung (Impressum / Datenschutz)
+  --------------------------------------------------------- */
+  function openModal(id) {
+    var modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Trigger-Links (Nav + Footer)
+  document.querySelectorAll('[data-modal]').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal(trigger.dataset.modal);
+      // Mobil-Nav schließen
+      if (nav) nav.classList.remove('nav-open');
+      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Schließen-Button und Backdrop
+  document.querySelectorAll('.modal').forEach(function (modal) {
+    var closeBtn = modal.querySelector('.modal-close');
+    var backdrop = modal.querySelector('.modal-backdrop');
+    if (closeBtn) closeBtn.addEventListener('click', function () { closeModal(modal); });
+    if (backdrop) backdrop.addEventListener('click', function () { closeModal(modal); });
+  });
+
+  // ESC-Taste schließt offene Modals
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal.open').forEach(closeModal);
+    }
   });
 
 })();
