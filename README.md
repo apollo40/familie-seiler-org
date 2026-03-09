@@ -1,99 +1,101 @@
-# Mike Seilers Homepage
+# Mike Seiler's Homepage
 
-Persönliche GitHub Pages Seite – Apple-Style, Dark Mode, Glassmorphism.
+Single-page personal site inspired by Apple's aesthetic with dark mode, glassmorphism, and a playful typing animation—perfect for showcasing a profile without any build tools.
 
-**Live:** https://apollo40.github.io/familie-seiler-org/
+## Live Demo & Preview
 
----
+- **Live:** https://apollo40.github.io/familie-seiler-org/
+- Capture a screenshot or GIF of the hero section (e.g., `assets/preview.jpg`) and embed it here to show readers the UI at a glance.
 
-## Einrichtung
+## Requirements
 
-### 1. Foto hinzufügen
+- GitHub account with Pages enabled
+- Modern desktop or mobile browser
+- Python 3 (ships with macOS/Linux) or any static-file server for local preview
+- No build chain: everything runs as plain HTML/CSS/JS
 
-Lege dein Profilbild als `assets/photo.jpg` ab (empfohlen: min. 400 × 400 px, quadratisch).
-Ohne Foto erscheint automatisch ein Kreis mit dem Initial **M** als Fallback.
+## Personalization Checklist
 
-### 2. Kontaktformular (Formspree)
+1. **Add your portrait**  
+   Save a square photo as `assets/photo.jpg` (≥ 400 × 400 px). If you skip this step, the hero falls back to a circle with the initial **M**.
 
-1. Registriere dich kostenlos auf [formspree.io](https://formspree.io)
-2. Erstelle ein neues Formular und kopiere deine **Form-ID** (z. B. `xpzgkqdo`)
-3. Öffne `index.html` und ersetze `{FORM_ID}` in der Zeile:
+2. **Wire up the contact form (Formspree)**  
+   1. Create a free account on [formspree.io](https://formspree.io).  
+   2. Copy your form ID (example: `xpzgkqdo`).  
+   3. Update `index.html` and replace `{FORM_ID}`:
+      ```html
+      action="https://formspree.io/f/{FORM_ID}"
+      ```
+      → becomes `action="https://formspree.io/f/xpzgkqdo"`. The free plan currently allows 50 submissions/month.
+
+3. **Update the contact email**  
+   Replace the placeholder in `index.html` so the mailto link hits your inbox:
    ```html
-   action="https://formspree.io/f/{FORM_ID}"
+   <a href="mailto:kontakt@example.com" class="contact-email">
    ```
-   → z. B. `action="https://formspree.io/f/xpzgkqdo"`
 
-Kostenloser Plan: 50 Nachrichten/Monat.
+4. **Fill in social links**  
+   Swap the `#` placeholders in `index.html` for your real profiles:
+   ```html
+   <!-- Instagram -->
+   <a href="https://instagram.com/YOUR_NAME" ...>
 
-### 3. Kontakt-E-Mail anpassen
+   <!-- LinkedIn -->
+   <a href="https://linkedin.com/in/YOUR_NAME" ...>
+   ```
 
-In `index.html` die Zeile mit `kontakt@example.com` durch deine echte E-Mail ersetzen:
-```html
-<a href="mailto:kontakt@example.com" class="contact-email">
-```
+5. **Personalize the copy & typing phrases**  
+   Update the "About" and "Interests" sections directly in `index.html`. The typing animation phrases live inside `js/main.js`:
+   ```js
+   const phrases = [
+     'Software engineer',
+     'Tech enthusiast',
+     'Photographer',
+     // ...
+   ];
+   ```
 
-### 4. Social-Media-Links eintragen
+## Deploy to GitHub Pages
 
-In `index.html` die `#`-Platzhalter in den Social-Links ersetzen:
-```html
-<!-- Instagram -->
-<a href="https://instagram.com/DEIN_NAME" ...>
+1. Open the repository on GitHub.
+2. Navigate to **Settings → Pages**.
+3. Select `main` as the branch and `/ (root)` as the folder.
+4. Click **Save** and wait ~1–2 minutes for the deployment to finish.
 
-<!-- LinkedIn -->
-<a href="https://linkedin.com/in/DEIN_NAME" ...>
-```
-
-### 5. Texte personalisieren
-
-Die Abschnitte „Über mich" und „Interessen" in `index.html` enthalten Platzhaltertexte –
-einfach durch deine eigenen Inhalte ersetzen.
-
-Die Typing-Phrasen im Hero findest du in `js/main.js`:
-```js
-const phrases = [
-  'Softwareentwickler',
-  'Technik-Enthusiast',
-  'Fotograf',
-  // ...
-];
-```
-
----
-
-## GitHub Pages aktivieren
-
-1. Repository auf GitHub öffnen
-2. **Settings** → **Pages**
-3. Unter *Branch* → `main` wählen, Ordner `/` (root)
-4. **Save** klicken
-5. Nach ca. 1–2 Minuten ist die Seite live
-
----
-
-## Dateistruktur
+## Project Structure
 
 ```
 familie-seiler-org/
-├── index.html          # Komplette Single-Page Site
+├── index.html          # Full single-page site
 ├── css/
-│   └── style.css       # Theming, Glassmorphism, Responsive, Dark Mode
+│   └── style.css       # Theming, glassmorphism, responsive tweaks, dark mode
 ├── js/
-│   └── main.js         # Animationen, Dark Mode, Formular, etc.
+│   └── main.js         # Animations, dark-mode toggle, form handling
 ├── assets/
-│   ├── favicon.svg     # SVG Favicon
-│   └── photo.jpg       # ← hier dein Foto ablegen
-├── .nojekyll           # GitHub Pages ohne Jekyll
+│   ├── favicon.svg     # SVG favicon
+│   └── photo.jpg       # ← drop your portrait here
+├── .nojekyll           # Disable Jekyll on GitHub Pages
 └── README.md
 ```
 
----
-
-## Lokale Vorschau
+## Local Preview
 
 ```bash
-# Python (in der Regel vorinstalliert)
+# Start a lightweight server (Python is bundled on macOS/Linux)
 python3 -m http.server 8080
 
-# Dann im Browser öffnen:
+# Visit the site in your browser
 # http://localhost:8080
 ```
+
+## Contributing
+
+Issues and pull requests are welcome. Please keep changes focused on accessibility, performance, or content improvements and include screenshots when UI tweaks are involved.
+
+## FAQ
+
+- **Why did the form stop working?**  
+  Formspree's free tier is capped at 50 submissions per month. Once the quota resets, the endpoint works again; otherwise upgrade your Formspree plan.
+
+- **Can I change the preview server port?**  
+  Yes. Run `python3 -m http.server 3000` (or any port you prefer) and open `http://localhost:3000` instead.
