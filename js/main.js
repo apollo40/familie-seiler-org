@@ -6,19 +6,30 @@
   'use strict';
 
   /* ---------------------------------------------------------
-     1. Dark Mode Toggle
+     1. Dark Mode Toggle + automatische System-Erkennung
   --------------------------------------------------------- */
   const themeToggle = document.getElementById('theme-toggle');
 
-  function setTheme(theme) {
+  function setTheme(theme, persist) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    if (persist) {
+      localStorage.setItem('theme', theme);
+    }
   }
+
+  // Automatisch dem Betriebssystem folgen (macOS/iOS "Automatisch" = Tag/Nacht)
+  // Greift nur, wenn der Nutzer KEINE manuelle Auswahl getroffen hat.
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  systemDark.addEventListener('change', function (e) {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light', false);
+    }
+  });
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
       const current = document.documentElement.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      setTheme(current === 'dark' ? 'light' : 'dark', true);
     });
   }
 
