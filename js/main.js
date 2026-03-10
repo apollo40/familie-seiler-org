@@ -170,6 +170,7 @@
     'Technik-Enthusiast',
     'Weltentdecker',
     'Familienvater',
+    'Sportler',
   ];
 
   if (typedText) {
